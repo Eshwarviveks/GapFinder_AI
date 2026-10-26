@@ -70,7 +70,6 @@ export default function MaterialsPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-sm font-bold text-black">
                 G
               </div>
-
               <div className="text-left">
                 <h1 className="text-lg font-bold tracking-tight">
                   GapFinder AI
@@ -177,34 +176,45 @@ export default function MaterialsPage() {
                 )}
               </div>
             </div>
+{/* What to upload */}
+<div className="mt-8 grid gap-4 md:grid-cols-3">
+  <div className="rounded-2xl border border-slate-200 p-5">
+    <p className="text-sm font-semibold">Syllabus</p>
+    <p className="mt-2 text-sm leading-6 text-slate-500">
+      Your course or exam syllabus.
+    </p>
+  </div>
 
-            {/* What to upload */}
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              <div className="rounded-2xl border border-slate-200 p-5">
-                <p className="text-sm font-semibold">Syllabus</p>
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  Your course or exam syllabus.
-                </p>
-              </div>
+  <div className="rounded-2xl border border-slate-200 p-5">
+    <p className="text-sm font-semibold">Notes</p>
+    <p className="mt-2 text-sm leading-6 text-slate-500">
+      Your study notes or textbook chapters.
+    </p>
+  </div>
 
-              <div className="rounded-2xl border border-slate-200 p-5">
-                <p className="text-sm font-semibold">Notes</p>
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  Your study notes or textbook chapters.
-                </p>
-              </div>
+  <div className="rounded-2xl border border-slate-200 p-5">
+    <p className="text-sm font-semibold">Past papers</p>
+    <p className="mt-2 text-sm leading-6 text-slate-500">
+      Previous question papers for diagnosis.
+    </p>
+  </div>
+</div>
 
-              <div className="rounded-2xl border border-slate-200 p-5">
-                <p className="text-sm font-semibold">Past papers</p>
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  Previous question papers for diagnosis.
-                </p>
-              </div>
-            </div>
-
+{/* Next step */}
+<div className="mt-10 flex justify-end">
+  <button
+    type="button"
+    onClick={() => {
+      window.location.href = "/topic-map";
+    }}
+    className="rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+  >
+    Next: Topic Map →
+  </button>
+</div>
           </div>
-        </section>
-      </div>
-    </main>
-  );
+          </section>
+        </div>
+      </main>
+    );
 }

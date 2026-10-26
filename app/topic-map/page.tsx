@@ -946,6 +946,21 @@ export default function TopicMapPage() {
           </section>
         )}
 
+        {/* Next step */}
+        {topics.length > 0 && (
+          <div className="mt-10 flex justify-end">
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = "/quiz";
+              }}
+              className="rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+            >
+              Next: Diagnostic Quiz →
+            </button>
+          </div>
+        )}
+
         {/* Empty initial state */}
 
         {!loadingTopics &&

@@ -13,11 +13,17 @@ create table if not exists public.document_chunks (
 
 alter table public.document_chunks enable row level security;
 
+drop policy if exists "Users can view their own document chunks"
+on public.document_chunks;
+
 create policy "Users can view their own document chunks"
 on public.document_chunks
 for select
 to authenticated
 using (auth.uid() = user_id);
+
+drop policy if exists "Users can insert their own document chunks"
+on public.document_chunks;
 
 create policy "Users can insert their own document chunks"
 on public.document_chunks
@@ -25,11 +31,16 @@ for insert
 to authenticated
 with check (auth.uid() = user_id);
 
+drop policy if exists "Users can delete their own document chunks"
+on public.document_chunks;
+
 create policy "Users can delete their own document chunks"
 on public.document_chunks
 for delete
 to authenticated
 using (auth.uid() = user_id);
+
+grant select, insert, delete on public.document_chunks to authenticated;
 
 create or replace function public.match_document_chunks(
   query_embedding extensions.vector(768),
@@ -64,7 +75,7 @@ $$;
 
 create index if not exists document_chunks_embedding_idx
 on public.document_chunks
-using hnsw (embedding vector_cosine_ops);
+using hnsw (embedding extensions.vector_cosine_ops);
 
 create index if not exists document_chunks_user_source_idx
 on public.document_chunks (user_id, source_name);
